@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { motion } from 'framer-motion';
 import { useStore } from '../store/useStore';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from '../lib/localDb';
 import { db } from '../lib/firebase';
 import { Save } from 'lucide-react';
 

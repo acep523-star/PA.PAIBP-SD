@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Save, Calendar, Edit2, X, Download } from 'lucide-react';
 import { useStore } from '../store/useStore';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from '../lib/localDb';
 import { db } from '../lib/firebase';
 import { 
   startOfMonth, endOfMonth, eachDayOfInterval, format, getDay, 

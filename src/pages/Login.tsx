@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
 import { useStore } from '../store/useStore';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from '../lib/localDb';
 import { db } from '../lib/firebase';
 
 export default function Login() {

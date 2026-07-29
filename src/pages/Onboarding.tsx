@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from '../lib/localDb';
 import { db } from '../lib/firebase';
 import { useStore } from '../store/useStore';
 import { motion } from 'framer-motion';

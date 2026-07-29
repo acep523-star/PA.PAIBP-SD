@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { motion } from 'framer-motion';
 import { useStore } from '../store/useStore';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from '../lib/localDb';
 import { db } from '../lib/firebase';
 import { Download, CheckSquare, RefreshCw } from 'lucide-react';
 import { Document, Packer, Paragraph, Table, TableCell, TableRow, TextRun, WidthType, AlignmentType, BorderStyle, ShadingType } from 'docx';
