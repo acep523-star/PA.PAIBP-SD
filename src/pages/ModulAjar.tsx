@@ -91,8 +91,14 @@ export default function ModulAjar() {
       });
 
       if (!response.ok) {
-        const errData = await response.json().catch(() => null);
-        throw new Error(errData?.error || 'Gagal menghasilkan Modul Ajar dari server');
+        const textData = await response.text();
+        let errData;
+        try {
+          errData = JSON.parse(textData);
+        } catch (e) {
+          throw new Error(`Server Response (${response.status}): ${textData.substring(0, 100)}...`);
+        }
+        throw new Error(errData?.error || `Gagal menghasilkan Modul Ajar dari server (${response.status})`);
       }
 
       const data = await response.json();
