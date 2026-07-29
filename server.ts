@@ -56,7 +56,7 @@ Jangan ada teks apa pun selain JSON yang valid. Jangan gunakan tag markdown \`\`
       let text = '';
       let retries = 3;
       let delay = 2000;
-      let usedModel = 'gemini-3.5-flash'; 
+      let usedModel = 'gemini-1.5-flash'; 
       
       while (retries > 0) {
         try {
@@ -124,7 +124,7 @@ Jangan ada teks apa pun selain JSON yang valid. Jangan gunakan tag markdown \`\`
       res.json({ prota: protaArray });
     } catch (error: any) {
       console.error(error);
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ error: error?.message || error?.toString() || 'Unknown server error' });
     }
   });
 
@@ -182,7 +182,7 @@ Format balasan berupa JSON dengan struktur persis seperti berikut (Hanya output 
       let text = '';
       let retries = 3;
       let delay = 2000;
-      let usedModel = 'gemini-3.5-flash'; 
+      let usedModel = 'gemini-1.5-flash'; 
       
       while (retries > 0) {
         try {
@@ -227,7 +227,7 @@ Format balasan berupa JSON dengan struktur persis seperti berikut (Hanya output 
       res.json(JSON.parse(text));
     } catch (error: any) {
       console.error('Error in /api/generate-modul-ajar:', error);
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ error: error?.message || error?.toString() || 'Unknown server error' });
     }
   });
 
