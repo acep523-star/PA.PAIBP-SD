@@ -1,0 +1,39 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    match /user_profiles/{documentId} {
+      allow read: if isOwner(documentId);
+      allow create: if isOwner(documentId) && isOwner(request.resource.data.uid);
+      allow update: if isOwner(documentId) && isOwner(request.resource.data.uid);
+      allow delete: if isOwner(documentId);
+    }
+    
+    match /teaching_schedules/{documentId} {
+      allow read: if isOwner(documentId);
+      allow create: if isOwner(documentId) && isOwner(request.resource.data.uid);
+      allow update: if isOwner(documentId) && isOwner(request.resource.data.uid);
+      allow delete: if isOwner(documentId);
+    }
+    
+    match /protas/{documentId} {
+      allow read: if isOwner(documentId);
+      allow create: if isOwner(documentId) && isOwner(request.resource.data.uid);
+      allow update: if isOwner(documentId) && isOwner(request.resource.data.uid);
+      allow delete: if isOwner(documentId);
+    }
+    
+    match /academic_calendar/{documentId} {
+      allow read, write: if isOwner(documentId);
+    }
+  }
+}
+
